@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMatch | Premium Movie Recommendations</title>
+    <meta name="description" content="Discover your next favorite movie using SVD-powered AI recommendations.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+</head>
+<body>
+
+    <!-- Animated starfield background -->
+    <canvas id="starfield"></canvas>
+
+    <!-- Film grain overlay -->
+    <div class="film-grain"></div>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="film-strip">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="hero-badge">
+                <i class="ph ph-sparkle"></i> AI-Powered
+            </div>
+            <h1>Cine<span class="highlight">Match</span></h1>
+            <p class="hero-tagline">Your personal AI cinema guide.<br>Powered by <em>Singular Value Decomposition</em>.</p>
+            <div class="film-strip">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section" id="search-section">
+            <div class="search-wrapper">
+                <div class="search-container" id="search-container">
+                    <i class="ph ph-film-slate search-icon"></i>
+                    <input type="text" id="movie-search" placeholder="Search for a movie you love... (e.g. Toy Story)" autocomplete="off">
+                    <button id="search-btn" aria-label="Discover recommendations">
+                        <i class="ph ph-magic-wand"></i>
+                        <span>Discover</span>
+                    </button>
+                </div>
+                <ul id="autocomplete-list" class="autocomplete-items"></ul>
+            </div>
+        </section>
+
+        <!-- Loader -->
+        <div id="loader" class="loader hidden">
+            <div class="cinema-loader">
+                <div class="reel">
+                    <div class="reel-hole"></div>
+                    <div class="reel-spoke"></div>
+                    <div class="reel-spoke"></div>
+                    <div class="reel-spoke"></div>
+                </div>
+                <div class="projector-beam"></div>
+            </div>
+            <p class="loader-text">Analyzing mathematical similarities<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results-section" class="results-hidden">
+            <div class="results-header">
+                <div class="results-label">
+                    <i class="ph ph-popcorn"></i>
+                    Because you liked
+                </div>
+                <h2 id="target-movie-label">...</h2>
+            </div>
+            <div class="recommendation-grid" id="recommendation-grid">
+                <!-- Cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- Trending Section -->
+        <section id="trending-section" class="trending-section">
+            <div class="trending-header">
+                <div class="now-playing-board">
+                    <span class="board-title">NOW SEARCHING</span>
+                </div>
+            </div>
+            <ul id="trending-list" class="trending-list">
+            </ul>
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}?v=3"></script>
+</body>
+</html>
